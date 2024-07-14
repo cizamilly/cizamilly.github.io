@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - DriveEase Luton/Bedford</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="signup-form">
+            <h2>Sign Up for DriveEase</h2>
+            <form id="signupForm">
+                <input type="text" id="firstName" name="firstName" placeholder="First Name" required>
+                <input type="text" id="lastName" name="lastName" placeholder="Last Name" required>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+                <button type="submit">Sign Up</button>
+                <p id="emailError" style="color: red; display: none;">Please enter a valid email address.</p>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 DriveEase. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const emailError = document.getElementById('emailError');
+            
+            // Regular expression for email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (!emailRegex.test(email)) {
+                emailError.style.display = 'block';
+                return;
+            }
+            
+            emailError.style.display = 'none';
+            
+            const message = "My name is ........................ Please add me to the DriveEase broadcast list so I can receive updates.";
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappLink = `https://wa.me/YOUR_WHATSAPP_NUMBER?text=${encodedMessage}`;
+            
+            window.location.href = whatsappLink;
+        });
+    </script>
+</body>
+</html>
